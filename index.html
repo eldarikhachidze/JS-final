@@ -14,30 +14,41 @@
     <button id="prevBtn" class="slider-btn">←</button>
     <button id="nextBtn" class="slider-btn">→</button>
 </div>
+<div class="search-bar">
+    <input  type="text" id="searchInput" placeholder="Search for movies...">
+    <button id="searchButton">Search</button>
+    <div class="search__overlay">
+
+    </div>
+</div>
 <div class="content">
     <div class="card__wrapper">
         <h1>Upcoming Movies</h1>
         <div id="upcoming" class="movies__list">
 
         </div>
+        <hr>
     </div>
     <div class="card__wrapper">
         <h1>Top Rated</h1>
         <div id="topRated" class="movies__list">
 
         </div>
+        <hr>
     </div>
     <div class="card__wrapper">
         <h1>Popular</h1>
         <div id="popular" class="movies__list">
 
         </div>
+        <hr>
     </div>
     <div class="card__wrapper">
         <h1>Now Playing</h1>
         <div id="nowPlaying" class="movies__list">
 
         </div>
+        <hr>
     </div>
 </div>
 
@@ -63,9 +74,17 @@
     </div>
 </template>
 <template id="slider_card">
-    <img class="slider__card_img" src="" alt="poster">
-    <p class="slider__card_title"></p>
+    <div class="slider__card">
+        <img class="slider__card_img" src="" alt="poster">
+        <div class="slider__title">
+            <p class="slider__card_title"></p>
+        </div>
+    </div>
 </template>
+
+<script src="slider.js"></script>
 <script src="index.js"></script>
+<script src="search.js"></script>
+
 </body>
 </html>

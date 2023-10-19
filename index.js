@@ -8,6 +8,7 @@ const youtubeTrailerUrl = 'https://youtube.com/embed/';
 const movieCard = document.querySelector('#movie_card')
 const videoOverlay = document.querySelector('.video__overlay')
 
+
 videoOverlay.addEventListener('click', () => {
     const iframe = videoOverlay.querySelector('iframe');
     const currentSrc = iframe.src;
@@ -18,6 +19,7 @@ videoOverlay.addEventListener('click', () => {
 });
 
 
+
 function disableScroll() {
     document.body.classList.add('no-scroll');
 };
@@ -25,6 +27,8 @@ function disableScroll() {
 function enableScroll() {
     document.body.classList.remove('no-scroll');
 };
+
+
 
 async function getUpcomingMovies() {
     const response = await fetch(ApiUrl + '/movie/upcoming', {
@@ -34,7 +38,8 @@ async function getUpcomingMovies() {
     });
     const movies = await response.json();
 
-    renderMovies(movies.results, '#upcoming')
+    renderMovies(movies.results, '#upcoming');
+    populateSlider(movies.results.slice(-3)); // Last three movies
 }
 
 async function getTopRatingMovies() {
@@ -80,6 +85,8 @@ async function getVideoTrailer(id) {
 
     return data.results;
 }
+
+
 
 function renderMovies(movies, selector) {
     const container = document.querySelector(selector)
