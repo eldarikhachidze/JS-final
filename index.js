@@ -9,6 +9,10 @@ const movieCard = document.querySelector('#movie_card')
 const videoOverlay = document.querySelector('.video__overlay')
 
 videoOverlay.addEventListener('click', () => {
+    const iframe = videoOverlay.querySelector('iframe');
+    const currentSrc = iframe.src;
+    iframe.src = '';
+    iframe.src = currentSrc;
     videoOverlay.classList.remove('show')
     enableScroll()
 });
@@ -21,6 +25,7 @@ function disableScroll() {
 function enableScroll() {
     document.body.classList.remove('no-scroll');
 };
+
 async function getUpcomingMovies() {
     const response = await fetch(ApiUrl + '/movie/upcoming', {
         headers: {
@@ -42,6 +47,7 @@ async function getTopRatingMovies() {
 
     renderMovies(movies.results, '#topRated')
 }
+
 async function getPopularMovies() {
     const response = await fetch(ApiUrl + '/movie/popular', {
         headers: {
@@ -52,6 +58,7 @@ async function getPopularMovies() {
 
     renderMovies(movies.results, '#popular')
 }
+
 async function getNowPlayingMovies() {
     const response = await fetch(ApiUrl + '/movie/now_playing', {
         headers: {
@@ -63,25 +70,20 @@ async function getNowPlayingMovies() {
     renderMovies(movies.results, '#nowPlaying')
 }
 
-async function getVideoTrailer () {
-    const response = await fetch(ApiUrl + '/movie/{movie_id}/videos', {
+async function getVideoTrailer(id) {
+    const response = await fetch(`${ApiUrl}/movie/${id}/videos`, { // <-- use backticks here
         headers: {
             'Authorization': 'bearer ' + apiKay
         }
     });
-    const movies = await response.json();
+    const data = await response.json();
 
-    renderMovies(movies.results, '#nowPlaying')
+    return data.results;
 }
 
 function renderMovies(movies, selector) {
     const container = document.querySelector(selector)
-    container.addEventListener('click', (e) => {
-        if (e.target.classList.contains('watchTrailer')) {
-            videoOverlay.classList.add('show');
-            disableScroll();
-        }
-    });
+
 
     for (let i = 0; i < movies.length; i++) {
         const card = movieCard.content.cloneNode(true);
@@ -90,6 +92,17 @@ function renderMovies(movies, selector) {
         card.querySelector('.name').textContent = movie.title
         card.querySelector('.rating').textContent = 'imdb: ' + movie.vote_average
         card.querySelector('.overview').textContent = movie.overview
+        card.querySelector('.watchTrailer').addEventListener('click', async (e) => {
+            videoOverlay.classList.add('show');
+            disableScroll();
+            const data = await getVideoTrailer(movie.id);
+
+            if (data && data.length > 0) { // Check if data is defined and has at least one item
+                videoOverlay.querySelector('iframe').src = youtubeTrailerUrl + data[0].key;
+            } else {
+                console.error("No video trailer found for movie with ID:", movie.id);
+            }
+        });
 
         container.appendChild(card)
     }

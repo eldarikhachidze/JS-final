@@ -7,7 +7,13 @@
 </head>
 <body>
 <header></header>
-<div class="slider"></div>
+<div class="slider-container">
+    <div id="movie-slider" class="slider-wrapper">
+
+    </div>
+    <button id="prevBtn" class="slider-btn">←</button>
+    <button id="nextBtn" class="slider-btn">→</button>
+</div>
 <div class="content">
     <div class="card__wrapper">
         <h1>Upcoming Movies</h1>
@@ -36,7 +42,7 @@
 </div>
 
 <div class="video__overlay">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Aipfhfxt3oI?si=ygCzeBg8GkZt0PDB"
+    <iframe width="560" height="315" src=""
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
@@ -55,6 +61,10 @@
             </div>
         </div>
     </div>
+</template>
+<template id="slider_card">
+    <img class="slider__card_img" src="" alt="poster">
+    <p class="slider__card_title"></p>
 </template>
 <script src="index.js"></script>
 </body>
