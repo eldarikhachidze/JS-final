@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header></header>
+<div class="slider"></div>
+<div class="content">
+    <div class="card__wrapper">
+        <h1>Upcoming Movies</h1>
+        <div id="upcoming" class="movies__list">
+
+        </div>
+    </div>
+    <div class="card__wrapper">
+        <h1>Top Rated</h1>
+        <div id="topRated" class="movies__list">
+
+        </div>
+    </div>
+    <div class="card__wrapper">
+        <h1>Popular</h1>
+        <div id="popular" class="movies__list">
+
+        </div>
+    </div>
+    <div class="card__wrapper">
+        <h1>Now Playing</h1>
+        <div id="nowPlaying" class="movies__list">
+
+        </div>
+    </div>
+</div>
+
+<div class="video__overlay">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Aipfhfxt3oI?si=ygCzeBg8GkZt0PDB"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+
+    </iframe>
+</div>
+<template id="movie_card">
+    <div class="movie__card">
+        <img class="card__img" src="" alt="poster">
+        <p class="name"></p>
+        <div class="hover__info">
+            <p id="overview" class="overview"></p>
+            <p id="watchTrailer" class="watchTrailer">Watch Trailer</p>
+            <div id="rating" class="rating">
+
+            </div>
+        </div>
+    </div>
+</template>
+<script src="index.js"></script>
+</body>
+</html>

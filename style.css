@@ -1,0 +1,125 @@
+body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+h1, h2, h3, h4, h5, h6, p {
+    color: black;
+}
+header {
+    width: 80%;
+    height: 90px;
+    background-color: black;
+    margin: 0 auto;
+}
+.slider {
+    /*width: 80%;*/
+    /*height: 600px;*/
+    /*background-color: aqua;*/
+    /*margin: 0 auto;*/
+}
+.content {
+    width: 80%;
+    height: 90px;
+    margin: 0 auto;
+}
+.card__wrapper {
+    padding: 80px 15px 0 15px;
+}
+.movies__list {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+.movie__card {
+    width: 250px;
+    height: 280px;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+
+}
+.hover__info {
+    position: absolute;
+    right: 250px; /* Initially set it to -400px to hide it by default */
+    top: 50%;
+    transform: translateY(-50%); /* This will vertically center the div */
+    width: 250px;
+    height: 280px;
+    background: rgb(147 150 153 / 70%); /* You can change this to any color or gradient */
+    color: white; /* This is the text color inside the hover_info div */
+    transition: right 0.3s; /* This will create a smooth slide-in effect */
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.movie__card:hover .hover__info {
+    right: 0; /* On hover, set right to 0 to make it slide in */
+}
+.card__img {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+    border-radius: 15px 15px 0 0;
+}
+.name {
+    padding-left: 15px;
+    font-size: 1.2rem;
+}
+.watchTrailer {
+    width: auto;
+    height: 25px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.rating {
+    width: 60px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.video__overlay {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.3);
+    /*display: flex;*/
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.video__overlay.show {
+    display: flex;
+}
+
+body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+.video__overlay {
+    display: none;
+    /* ... other styles ... */
+}
